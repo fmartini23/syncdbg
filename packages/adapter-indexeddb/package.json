@@ -1,0 +1,29 @@
+{
+    "name": "@syncdbg/adapter-indexeddb",
+    "version": "0.1.0",
+    "description": "IndexedDB persistence adapter for SyncDBG. Provides offline storage capabilities in the browser.",
+    "author": "Your Name <your.email@example.com>",
+    "license": "MIT",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "files": [
+      "dist"
+    ],
+    "scripts": {
+      "build": "tsup src/index.ts --format cjs,esm --dts",
+      "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+      "clean": "rm -rf .turbo dist"
+    },
+    "dependencies": {
+      "@syncdbg/core": "workspace:*"
+    },
+    "devDependencies": {
+      "tsup": "^8.0.2",
+      "typescript": "^5.4.5"
+    },
+    "publishConfig": {
+      "access": "public"
+    }
+  }
+  

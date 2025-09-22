@@ -1,0 +1,15 @@
+# Arquivo de configuração do workspace para pnpm.
+#
+# Este arquivo define os locais onde o pnpm deve procurar por pacotes
+# que fazem parte do monorepo. O pnpm usará esses padrões para encontrar
+# todos os package.json e criar os links simbólicos necessários,
+# permitindo que os pacotes se refiram uns aos outros localmente.
+
+packages:
+  # Inclui todos os pacotes localizados diretamente dentro do diretório 'packages/'.
+  # Ex: 'packages/core', 'packages/react', etc.
+  - 'packages/*'
+
+  # Opcional: Se você tiver apps de exemplo ou documentação que também são pacotes,
+  # você pode adicioná-los aqui também.
+  # Ex: 'apps/*'

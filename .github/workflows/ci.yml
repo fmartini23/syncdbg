@@ -1,0 +1,66 @@
+# Nome do workflow que aparecerá na aba "Actions" do GitHub
+name: CI - Build, Lint & Test
+
+# Gatilhos: quando este workflow deve ser executado
+on:
+  # Executa em pushes para a branch 'main'
+  push:
+    branches: [ "main" ]
+  # Executa em pull requests direcionados à branch 'main'
+  pull_request:
+    branches: [ "main" ]
+
+# Permissões para o GITHUB_TOKEN
+permissions:
+  contents: read
+
+# Define os jobs que serão executados
+jobs:
+  # Nome do job (pode ser qualquer nome)
+  build_and_test:
+    # O tipo de máquina virtual para executar o job
+    runs-on: ubuntu-latest
+
+    # Etapas (steps) que compõem o job
+    steps:
+      # 1. Checkout do código
+      # Baixa o código do seu repositório para a máquina virtual do runner
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Configurar pnpm
+      # Instala e configura o pnpm, que é ideal para monorepos (workspaces)
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8 # Use uma versão recente do pnpm
+
+      # 3. Configurar o ambiente Node.js
+      # Instala a versão especificada do Node.js e usa o cache do pnpm
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Recomenda-se usar uma versão LTS (Long-Term Support)
+          cache: 'pnpm'
+
+      # 4. Instalar dependências
+      # Executa 'pnpm install'. O '--frozen-lockfile' garante que as versões exatas
+      # do pnpm-lock.yaml sejam usadas, garantindo builds consistentes.
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 5. Lint - Verificação de qualidade e formatação do código
+      # Este comando dependerá dos scripts que definirmos no package.json raiz.
+      # Exemplo: 'pnpm lint' poderia rodar ESLint e Prettier.
+      - name: Run Lint
+        run: pnpm lint
+
+      # 6. Build - Compilar todos os pacotes do monorepo
+      # O Turborepo (ou 'pnpm --filter') otimiza isso, fazendo o build apenas do que mudou.
+      - name: Build packages
+        run: pnpm build
+
+      # 7. Test - Executar todos os testes do projeto
+      # Roda os testes em todos os pacotes que possuem um script de teste.
+      - name: Run tests
+        run: pnpm test

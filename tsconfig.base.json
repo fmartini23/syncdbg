@@ -1,0 +1,89 @@
+{
+    "compilerOptions": {
+      /* ======================================================================== */
+      /* =================== Configurações de Saída do Módulo =================== */
+      /* ======================================================================== */
+  
+      // Define a versão do ECMAScript de destino para o código JavaScript gerado.
+      // 'ES2020' é um bom equilíbrio entre modernidade e compatibilidade.
+      "target": "ES2020",
+  
+      // Especifica o sistema de módulos para o código gerado.
+      // 'ESNext' permite que ferramentas de build como 'tsup' decidam o formato final (CJS/ESM).
+      "module": "ESNext",
+  
+      // Define como o TypeScript resolve os módulos. 'node' é o padrão para projetos Node.js e web.
+      "moduleResolution": "node",
+  
+      // Permite a interoperabilidade entre módulos CommonJS e ES Modules. Essencial.
+      "esModuleInterop": true,
+  
+      // Permite a importação de módulos que usam 'export default' de forma mais limpa.
+      "allowSyntheticDefaultImports": true,
+  
+  
+      /* ======================================================================== */
+      /* ==================== Checagem de Tipo Estrita (Strict) =================== */
+      /* ======================================================================== */
+  
+      // Habilita todas as opções de checagem de tipo estrita. É a melhor prática.
+      "strict": true,
+  
+      // Exige que todas as variáveis e parâmetros tenham um tipo definido.
+      "noImplicitAny": true,
+  
+      // Habilita a checagem estrita de 'null' e 'undefined'.
+      "strictNullChecks": true,
+  
+      // Garante que os tipos de função sejam checados de forma mais rigorosa.
+      "strictFunctionTypes": true,
+  
+      // Checagem estrita dos métodos 'bind', 'call', e 'apply'.
+      "strictBindCallApply": true,
+  
+      // Exige que todas as propriedades de uma classe sejam inicializadas no construtor.
+      "strictPropertyInitialization": true,
+  
+      // Proíbe o uso de 'this' com um tipo implícito 'any'.
+      "noImplicitThis": true,
+  
+  
+      /* ======================================================================== */
+      /* ======================= Configurações Adicionais ======================= */
+      /* ======================================================================== */
+  
+      // Habilita o suporte para JSX. Cada pacote (como @syncdbg/react) pode especificar o modo ('react-jsx').
+      "jsx": "preserve",
+  
+      // Não verifica os tipos em arquivos de declaração de bibliotecas (.d.ts). Acelera a compilação.
+      "skipLibCheck": true,
+  
+      // Força o uso consistente de maiúsculas e minúsculas nos nomes de arquivos. Evita problemas entre SOs.
+      "forceConsistentCasingInFileNames": true,
+  
+      // Permite a importação de arquivos .json como módulos.
+      "resolveJsonModule": true,
+  
+      // Garante que cada arquivo seja um módulo separado.
+      "isolatedModules": true,
+  
+  
+      /* ======================================================================== */
+      /* ===================== Configurações para Monorepo ====================== */
+      /* ======================================================================== */
+  
+      // Habilita o modo de "projeto composto". Essencial para monorepos, pois permite
+      // que o TypeScript entenda as dependências entre os pacotes e construa-os de forma incremental.
+      "composite": true,
+  
+      // Gera os arquivos de declaração de tipos (.d.ts) para os pacotes.
+      "declaration": true,
+  
+      // Gera source maps para os arquivos de declaração.
+      "declarationMap": true,
+  
+      // Gera source maps para o código JavaScript, facilitando a depuração.
+      "sourceMap": true
+    }
+  }
+  
