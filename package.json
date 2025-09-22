@@ -1,6 +1,6 @@
 {
     "name": "syncdbg",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "private": false,
     "description": "SyncDBG offline-first data synchronization library.",
     "author": "Fernando Martini (https://github.com/fmartini23)",
